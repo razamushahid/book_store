@@ -14,7 +14,7 @@ class Book(models.Model):
     is_bestselling = models.BooleanField(default=False)
     published_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(default="", null=False, db_index=True)  # Harry Potter 1 => harry-potter-1
+    slug = models.SlugField(default="", blank=True, null=False, db_index=True)  # Harry Potter 1 => harry-potter-1
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
